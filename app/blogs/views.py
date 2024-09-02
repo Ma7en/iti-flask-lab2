@@ -3,12 +3,6 @@ from flask import render_template, request, redirect, url_for, Blueprint
 from app.blogs import blogs_blueprint
 
 
-# @user_blueprint.route("", endpoint="index")
-# def index():
-#     blogs = Blogs.objects.all()
-#     return render_template("users/index.html", blogs=blogs)
-
-
 @blogs_blueprint.route("/", endpoint="list")
 def blogs_list():
     blogs = Blogs.query.all()
@@ -55,9 +49,18 @@ def blog_show(id):
     return render_template("blogs/show.html", blog=blog)
 
 
-@blogs_blueprint.route("<int:id>/delete", endpoint="delete")
+@blogs_blueprint.route("<int:id>/delete", endpoint="delete", methods=["POST"])
 def blogs_delete(id):
     blog = db.get_or_404(Blogs, id)
     db.session.delete(blog)
     db.session.commit()
     return redirect(url_for("blogs.list"))
+
+
+# use -> url_for
+# @blogs_blueprint.route("<int:id>/delete", endpoint="delete")
+# def blogs_delete(id):
+#     blog = db.get_or_404(Blogs, id)
+#     db.session.delete(blog)
+#     db.session.commit()
+#     return redirect(url_for("blogs.list"))

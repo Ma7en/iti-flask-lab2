@@ -6,7 +6,7 @@
 <div class="mb-3 d-flex justify-content-between">
     <h2 class="">Blog Info</h2>
 
-    <a href="{{ url_for('blogs.list')}}" class="btn btn-primary"
+    <a href="{{ url_for('blogs.list') }}" class="btn btn-primary"
         >Back to all Blogs</a
     >
 </div>
@@ -16,9 +16,9 @@
         <div class="col-5">
             <div class="h-100">
                 <img
-                    src="{{blog.image_url}}"
+                    src="{{ blog.image_url }}"
                     class="card-img-top w-100 h-100 object-cover"
-                    alt="{{blog.name}}"
+                    alt="{{ blog.name }}"
                 />
             </div>
         </div>

@@ -24,4 +24,4 @@ class Blogs(db.Model):
 
     @property
     def delete_url(self):
-        return url_for("blogs.delete", blog=self.id)
+        return url_for("blogs.delete", id=self.id)
